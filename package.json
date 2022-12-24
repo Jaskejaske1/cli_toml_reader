@@ -1,0 +1,22 @@
+{
+  "name": "cli_toml_reader",
+  "version": "0.0.1",
+  "description": "A piece of software to show the contents of toml files inside a folder structure.",
+  "exports": "./index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=14.16"
+  },
+  "author": "Jaskejaske1",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.30.0"
+  },
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "inquirer": "^9.1.4"
+  }
+}
