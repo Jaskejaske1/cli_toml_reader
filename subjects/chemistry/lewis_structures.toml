@@ -1,0 +1,11 @@
+title = "Lewis Structures"
+
+[definitions]
+"molecule" = "a group of atoms held together by covalent bonds"
+"covalent bond" = "a bond formed by the sharing of electrons between two atoms"
+"valence electrons" = "electrons in the outermost shell of an atom"
+"octet rule" = "atoms tend to gain, lose, or share electrons in order to achieve a full outer shell of eight electrons"
+"single bond" = "a covalent bond formed by the sharing of two electrons between two atoms"
+"double bond" = "a covalent bond formed by the sharing of four electrons between two atoms"
+"triple bond" = "a covalent bond formed by the sharing of six electrons between two atoms"
+"lewis structure" = "a diagram that shows the bonding between atoms of a molecule and the lone pairs of electrons that may exist in the molecule"
