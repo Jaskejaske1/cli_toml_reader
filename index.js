@@ -103,32 +103,40 @@ const askForDefinition = async () => {
 			},
 		]);
 
-		// Check if the entered definition exists in the parsed TOML file
-		if (parsedToml[definition]) {
-			// If the entered definition exists, display its content
-			console.log(parsedToml[definition]);
+		// Get an array of all the keys in the parsedToml object
+		const keys = Object.keys(parsedToml);
+
+		// Find all keys that partially match the user's input
+		const matchingKeys = keys.filter((key) => key.includes(definition));
+
+		if (matchingKeys.length > 0) {
+			console.log('Matching definitions:');
+			matchingKeys.forEach((key) => {
+				console.log(`- ${key}: ${parsedToml[key]}`);
+			});
+
+			// Prompt the user to ask for another definition or quit the program
+			const { askAgain } = await inquirer.prompt([
+				{
+					type: 'confirm',
+					name: 'askAgain',
+					message: 'Do you want to ask for another definition?',
+					default: true,
+				},
+			]);
+
+			if (askAgain) {
+				// If the user wants to ask for another definition, call the askForDefinition function again
+				return askForDefinition();
+			} else {
+				// If the user doesn't want to ask for another definition, end the program
+				console.log('Thank you for using the toml reader app. Goodbye!');
+				process.exit(0);
+			}
 		} else {
-			// If the entered definition does not exist, display an error message
-			console.error('Definition not found.');
-		}
-
-		// Ask the user if they want to ask another question
-		const { askAgain } = await inquirer.prompt([
-			{
-				type: 'confirm',
-				name: 'askAgain',
-				message: 'Do you want to ask another question?',
-				default: true,
-			},
-		]);
-
-		if (askAgain) {
-			// If the user wants to ask another question, call the askForDefinition function again
+			console.log('No matching definitions found. Please try again.');
+			// Add a recursive call to askForDefinition here to prompt the user to try again
 			return askForDefinition();
-		} else {
-			// If the user doesn't want to ask another question, exit the program
-			console.log('Goodbye!');
-			process.exit(0);
 		}
 	} catch (err) {
 		console.error(err);
@@ -137,4 +145,4 @@ const askForDefinition = async () => {
 };
 
 // Call the askForDefinition function
-askForDefinition();
+await askForDefinition();
